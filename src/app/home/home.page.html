@@ -1,20 +1,53 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+<ion-header>
+  <ion-toolbar color="">
+    <ion-title>Bienvenido {{currentUser.username}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content>
+  <ion-grid class="mt-5 ml-3 mr-3 text-center">
+    <ion-row class="mt-5">
+      <ion-col>
+        <div>
+          <ion-button text-wrap color="success" type="block">Productos</ion-button>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <ion-button text-wrap color="warning" type="block">Proveedores</ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="mt-5">
+      <ion-col>
+        <div>
+          <ion-button text-wrap color="secondary" type="block">Reducciones <br>de <br>Precio</ion-button>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <ion-button text-wrapcolor="medium" type="block">Tickets</ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="mt-5" *ngIf="currentUser.permission=='ADMIN'">
+      <ion-col>
+        <div>
+          <ion-button text-wrap color="danger" type="block">Informes</ion-button>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <ion-button text-wrap color="light" type="block">Usuarios</ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="mt-5" *ngIf="currentUser.permission!='ADMIN'">
+      <ion-col>
+        <div>
+          <ion-button text-wrap color="danger" type="block">Informes</ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
