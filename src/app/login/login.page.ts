@@ -26,7 +26,7 @@ export class LoginPage {
   submit() {
     this.logServ.logIn(this.loginForm.value.username, this.loginForm.value.password).subscribe(res => {
       console.log("User Logged In", res);
-      this.logServ.setTokens(this.loginForm.value.username, this.loginForm.value.password, res.permission);
+      this.logServ.setTokens(res.id, this.loginForm.value.username, this.loginForm.value.password, res.permission);
       this.router.navigate(["/home"]);
     });
   }

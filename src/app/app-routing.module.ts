@@ -32,13 +32,21 @@ const routes: Routes = [
     loadChildren: () => import('./price-reductions/price-reductions.module').then(m => m.PriceReductionsPageModule)
   },
   {
-    path: 'tickets',
-    loadChildren: () => import('./tickets/tickets.module').then(m => m.TicketsPageModule)
-  },
-  {
     path: 'reports',
     loadChildren: () => import('./reports/reports.module').then(m => m.ReportsPageModule)
   },
+  {
+    path: 'products/form',
+    loadChildren: () => import('./products/productform/productform.module').then(m => m.ProductformPageModule)
+  },
+  {
+    path: 'products/details',
+    loadChildren: () => import('./products/productdetails/productdetails.module').then(m => m.ProductdetailsPageModule)
+  },
+  {
+    path: 'reports/form',
+    loadChildren: () => import('./reports/reportform/reportform.module').then(m => m.ReportformPageModule)
+  }
 ];
 
 @NgModule({

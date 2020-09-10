@@ -4,11 +4,12 @@ import { User } from '../dtos/user';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { UtilsService } from '../utils/utils.service';
-
+import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+  route = environment.url;
   header: HttpHeaders;
   constructor(private http: HttpClient, private utils: UtilsService) { }
 
@@ -16,14 +17,14 @@ export class LoginService {
     this.header = new HttpHeaders({
       Authorization: 'Basic ' + btoa(username + ":" + password), username: username
     });
-    return this.http.get<User>("http://localhost:8090/login", { headers: this.header }).pipe(
+    return this.http.get<User>(this.route + "login", { headers: this.header }).pipe(
       catchError(err => this.handleError(err))
     );
   }
 
-  setTokens(username, password, permission) {
+  setTokens(id, username, password, permission) {
     localStorage.setItem("authToken", btoa(username + ":" + password))
-    localStorage.setItem("currentUserToken", JSON.stringify({ username: username, permission: permission }));
+    localStorage.setItem("currentUserToken", JSON.stringify({ id: id, username: username, permission: permission }));
 
   }
 

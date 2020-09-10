@@ -16,8 +16,4 @@ export class HomePage implements OnInit {
 
   }
 
-  ionViewDidEnter() {
-
-  }
-
 }

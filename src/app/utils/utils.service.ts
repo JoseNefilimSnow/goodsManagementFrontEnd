@@ -55,6 +55,7 @@ export class UtilsService {
   }
 
   formatDate(date) {
+    let parsedDate: Date = new Date(date);
     var monthNames = [
       "Enero", "Febrero", "Marzo",
       "Abril", "Mayo", "Junio", "Julio",
@@ -62,10 +63,14 @@ export class UtilsService {
       "Noviembre", "Diciembre"
     ];
 
-    var day = date.getDate();
-    var monthIndex = date.getMonth();
-    var year = date.getFullYear();
+    var day = parsedDate.getDate();
+    var monthIndex = parsedDate.getMonth();
+    var year = parsedDate.getFullYear();
+    if (day < 10) {
+      return '0' + day + '/' + monthNames[monthIndex] + '/' + year;
 
-    return day + ' ' + monthNames[monthIndex] + ' ' + year;
+    } else {
+      return day + '/' + monthNames[monthIndex] + '/' + year;
+    }
   }
 }

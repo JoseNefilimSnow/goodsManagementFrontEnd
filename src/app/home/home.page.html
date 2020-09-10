@@ -1,53 +1,69 @@
 <ion-header>
-  <ion-toolbar color="">
-    <ion-title>Bienvenido {{currentUser.username}}</ion-title>
+  <ion-toolbar color="primary text-center">
+    <ion-title class="supersize">Bienvenido {{currentUser.username}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button class="supersize" [routerLink]="['/login']">
+        <ion-icon name="log-out" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid class="mt-5 ml-3 mr-3 text-center">
-    <ion-row class="mt-5">
-      <ion-col>
-        <div>
-          <ion-button text-wrap color="success" type="block">Productos</ion-button>
-        </div>
-      </ion-col>
-      <ion-col>
-        <div>
-          <ion-button text-wrap color="warning" type="block">Proveedores</ion-button>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row class="mt-5">
-      <ion-col>
-        <div>
-          <ion-button text-wrap color="secondary" type="block">Reducciones <br>de <br>Precio</ion-button>
-        </div>
-      </ion-col>
-      <ion-col>
-        <div>
-          <ion-button text-wrapcolor="medium" type="block">Tickets</ion-button>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row class="mt-5" *ngIf="currentUser.permission=='ADMIN'">
-      <ion-col>
-        <div>
-          <ion-button text-wrap color="danger" type="block">Informes</ion-button>
-        </div>
-      </ion-col>
-      <ion-col>
-        <div>
-          <ion-button text-wrap color="light" type="block">Usuarios</ion-button>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row class="mt-5" *ngIf="currentUser.permission!='ADMIN'">
-      <ion-col>
-        <div>
-          <ion-button text-wrap color="danger" type="block">Informes</ion-button>
-        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <ion-card class="mtextra ml-5 mr-5 text-center">
+
+    <ion-grid class="mt-5 mb-5">
+      <ion-row>
+        <ion-col>
+          <div>
+            <ion-button size="large" class="overflow-me" color="secondary" expand="full"
+              [routerLink]="['/price-reductions']">Reducciones <br> de Precio
+            </ion-button>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <ion-button size="large" class="overflow-me" color="warning" expand="full" [routerLink]="['/suppliers']">
+              Proveedores</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="mt-5">
+        <ion-col>
+          <div>
+            <ion-button size="large" class="overflow-me" color="success" expand="full" [routerLink]="['/products']">
+              Productos</ion-button>
+          </div>
+        </ion-col>
+        <!-- <ion-col>
+          <div>
+            <ion-button size="large" class="overflow-me" color="medium" expand="full" [routerLink]="['/tickets']">
+              Tickets</ion-button>
+          </div>
+        </ion-col> -->
+      </ion-row>
+      <ion-row class="mt-5" *ngIf="currentUser.permission=='ADMIN'">
+        <ion-col>
+          <div>
+            <ion-button size="large" class="overflow-me" color="light" expand="full" [routerLink]="['/users']">Usuarios
+            </ion-button>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <ion-button size="large" class="overflow-me" color="danger" expand="full" [routerLink]="['/reports']">
+              Informes</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="mt-5" *ngIf="currentUser.permission!='ADMIN'">
+        <ion-col>
+          <div>
+            <ion-button size="large" class="overflow-me" color="danger" expand="full" [routerLink]="['/reports']">
+              Informes</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
 </ion-content>

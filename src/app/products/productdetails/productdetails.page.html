@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="success text-center">
+    <ion-title class="supersize">{{product.code}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="mt-5 row justify-content-center align-items-center">
+    <ion-card class="pl-5 pr-5">
+      <ion-list>
+        <ion-item class="supersize mt-2" wrap-text>Descripción: {{product.description}}</ion-item>
+        <ion-item class="supersize mt-2" wrap-text>Fecha de creación: {{this.utils.formatDate(product.creationDate)}}
+        </ion-item>
+        <ion-item class="supersize mt-2" wrap-text>Estado: {{this.beautifyStatus(product.state)}}</ion-item>
+        <ion-item class="supersize mt-2" wrap-text>Creador(nombre): {{product.creator.username}}</ion-item>
+        <ion-item class="supersize mt- " wrap-text>Precio: {{product.price}} €</ion-item>
+      </ion-list>
+    </ion-card>
+  </div>
+  <ion-row>
+    <ion-col size=6>
+
+      <ion-card class="pl-5 pr-5">
+        <ion-item class="supersize">Descuentos:</ion-item>
+
+        <ion-list>
+          <ion-item *ngFor="let pr of product.priceReductions">
+            {{pr.reducedPrice}}
+          </ion-item>
+        </ion-list>
+      </ion-card>
+
+    </ion-col>
+    <ion-col size=6>
+
+      <ion-card class="pl-5 pr-5">
+        <ion-item class="supersize">Proveedores:</ion-item>
+        <ion-list>
+          <ion-item *ngFor="let supplier of product.suppliers">
+            {{supplier.name}}
+          </ion-item>
+        </ion-list>
+      </ion-card>
+
+    </ion-col>
+  </ion-row>
+
+
+</ion-content>

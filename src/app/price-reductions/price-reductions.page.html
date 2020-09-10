@@ -1,9 +1,32 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>priceReductions</ion-title>
+  <ion-toolbar color="success text-center">
+    <ion-title class="supersize">Reducción de Precio</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button class="supersize" (click)="addProduct()">
+        <ion-icon name="add-outline" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <ion-card class="mr-5 ml-5 " *ngIf="products">
+
+    <div scrollY="true">
+      <ion-list class="row">
+        <ion-item class="col col-50" ng-repeat="product in products">
+          <ion-label text-wrap>Código: {{product.code}}</ion-label>
+          <ion-label text-wrap>Descripción: {{product.description}}</ion-label>
+          <ion-label text-wrap>Fecha de creación: {{product.creationDate}}</ion-label>
+          <ion-label text-wrap>Código: {{product.code}}</ion-label>
+
+        </ion-item>
+      </ion-list>
+    </div>
+  </ion-card>
 
 </ion-content>
