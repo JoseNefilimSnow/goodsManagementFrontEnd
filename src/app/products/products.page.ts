@@ -28,7 +28,8 @@ export class ProductsPage implements OnInit {
   ngOnInit() {
   }
 
-  ionViewDidEnter() {
+  ionViewWillEnter() {
+    this.auxProducts = [];
     this.productServ.getProducts().subscribe(products => {
       this.products = products;
 
@@ -114,7 +115,7 @@ export class ProductsPage implements OnInit {
       text: "Confirmar", handler: _ => {
         this.productServ.deleteProduct(id).subscribe(res => {
           this.utils.presentToast("Producto Eliminado", 3000, "top");
-          this.ionViewDidEnter();
+          this.ionViewWillEnter();
         }
         );
       }

@@ -12,10 +12,6 @@ import { ReportService } from './report.service';
 })
 export class ReportsPage implements OnInit {
   reports: Report[] = [];
-  reportsActive: Report[] = [];
-  reportsDiscounted: Report[] = [];
-  auxReports: Report[] = [];
-  filter = "all";
 
   currentUser = JSON.parse(localStorage.getItem("currentUserToken"));
   constructor(private utils: UtilsService, private reportServ: ReportService, private route: Router) {
@@ -26,6 +22,7 @@ export class ReportsPage implements OnInit {
   }
 
   ionViewDidEnter() {
+    this.reports = [];
     this.reportServ.getReports().subscribe(reports => {
       this.reports = reports;
 

@@ -21,7 +21,7 @@ export class ProductformPage implements OnInit {
   productForm: FormGroup = this.formBuilder.group({
     code: ['', [Validators.required]],
     desc: ['', [Validators.required]],
-    price: ['', [Validators.required]]
+    price: ['', []]
   });
 
   constructor(private utils: UtilsService, private formBuilder: FormBuilder, private prodServ: ProductService, private userServ: UserService, private nav: NavController, private router: Router, private route: ActivatedRoute) {

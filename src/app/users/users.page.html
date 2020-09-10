@@ -1,9 +1,37 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>users</ion-title>
+  <ion-toolbar color="ligth text-center">
+    <ion-title class="supersize">Usuarios</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <ion-card class="mt-5 " *ngIf="users.length>0;else noData">
+    <table class=" ml-2 mr-2 supersize2 table table-bordered table-striped table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th><b>Nombre de Usuario:</b></th>
+          <th><b>Permisos:</b></th>
+          <th><b>Acivo:</b></th>
+          <th>Acciones:</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor=" let user of users">
+          <td>{{user.username}}</td>
+          <td>{{user.permission}}</td>
+          <td>{{this.beautifyEnabled(user.enabled)}}</td>
+
+          <td>
+            <ion-button color="danger" *ngIf="checkPermissions()" (click)="delete(user.id)">Desactivar</ion-button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </ion-card>
 
 </ion-content>

@@ -1,32 +1,37 @@
 <ion-header>
-  <ion-toolbar color="success text-center">
-    <ion-title class="supersize">Reducción de Precio</ion-title>
+  <ion-toolbar color="secondary text-center">
+    <ion-title class="supersize">Descuentos</ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="home"></ion-back-button>
-    </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button class="supersize" (click)="addProduct()">
-        <ion-icon name="add-outline" color="light"></ion-icon>
-      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <ion-card class="mr-5 ml-5 " *ngIf="products">
+  <ion-card class="mt-5 " *ngIf="priceReductions.length>0;else noData">
+    <table class=" ml-2 mr-2 supersize2 table table-bordered table-striped table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th><b>Fecha de Inicio:</b></th>
+          <th><b>Fecha de Fin:</b></th>
+          <th><b>Descuento(%):</b></th>
+          <th *ngIf="checkPermissions()">Acciones:</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor=" let priceReduction of priceReductions">
+          <td>{{this.utils.formatDate(priceReduction.startingDate)}}</td>
+          <td>{{this.utils.formatDate(priceReduction.endDate)}}</td>
+          <td>{{priceReduction.reducedPrice}}</td>
+          <td>
+            <ion-button color="danger" *ngIf="checkPermissions()" (click)="delete(priceReduction.id)">Eliminar
+            </ion-button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-    <div scrollY="true">
-      <ion-list class="row">
-        <ion-item class="col col-50" ng-repeat="product in products">
-          <ion-label text-wrap>Código: {{product.code}}</ion-label>
-          <ion-label text-wrap>Descripción: {{product.description}}</ion-label>
-          <ion-label text-wrap>Fecha de creación: {{product.creationDate}}</ion-label>
-          <ion-label text-wrap>Código: {{product.code}}</ion-label>
-
-        </ion-item>
-      </ion-list>
-    </div>
   </ion-card>
 
 </ion-content>

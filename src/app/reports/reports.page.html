@@ -16,7 +16,7 @@
           <th><b>Razón:</b></th>
           <th><b>Creador:</b></th>
           <th><b>Código Producto:</b></th>
-          <th>Acciones:</th>
+          <th *ngIf="checkPermissions()">Acciones:</th>
         </tr>
       </thead>
       <tbody>
