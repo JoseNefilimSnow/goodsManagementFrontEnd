@@ -26,6 +26,7 @@ export class UtilsService {
       message: message,
       buttons: buttons,
       inputs: inputs,
+      cssClass: 'alertSupersize'
 
     })
     await alrt.present();
@@ -48,7 +49,8 @@ export class UtilsService {
     let loading = await this.toastCtrl.create({
       message: text,
       duration: duration,
-      position: pos
+      position: pos,
+      cssClass: 'toastSupersize'
     });
 
     await loading.present();

@@ -2,8 +2,8 @@
   <ion-toolbar color="primary text-center">
     <ion-title class="supersize">Bienvenido {{currentUser.username}}</ion-title>
     <ion-buttons slot="end">
-      <ion-button class="supersize" [routerLink]="['/login']">
-        <ion-icon name="log-out" color="light"></ion-icon>
+      <ion-button color="light" class="supersize" [routerLink]="['/login']">
+        <ion-icon name="log-out"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -17,7 +17,7 @@
         <ion-col>
           <div>
             <ion-button size="large" class="overflow-me" color="secondary" expand="full"
-              [routerLink]="['/price-reductions']">Reducciones <br> de Precio
+              [routerLink]="['/price-reductions']">Descuentos
             </ion-button>
           </div>
         </ion-col>
@@ -39,7 +39,7 @@
       <ion-row class="mt-5" *ngIf="currentUser.permission=='ADMIN'">
         <ion-col>
           <div>
-            <ion-button size="large" class="overflow-me" color="light" expand="full" [routerLink]="['/users']">Usuarios
+            <ion-button size="large" class="overflow-me" color="medium" expand="full" [routerLink]="['/users']">Usuarios
             </ion-button>
           </div>
         </ion-col>

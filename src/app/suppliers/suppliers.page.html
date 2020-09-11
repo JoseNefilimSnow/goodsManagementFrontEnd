@@ -4,6 +4,11 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button class="supersize" (click)="formSupplier('add',null)">
+        Añadir
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -23,6 +28,8 @@
           <td>{{supplier.name}}</td>
           <td>{{supplier.country}}</td>
           <td>
+
+            <ion-button color="primary" (click)="formSupplier('edit',supplier)">Editar</ion-button>
             <ion-button color="danger" *ngIf="checkPermissions()" (click)="delete(supplier.id)">Eliminar</ion-button>
           </td>
         </tr>

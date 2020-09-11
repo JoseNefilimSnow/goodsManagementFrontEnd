@@ -6,7 +6,7 @@
     </ion-buttons>
     <ion-buttons slot="end">
       <ion-button class="supersize" (click)="formProduct('add',null)">
-        <ion-icon name="add-outline" color="light"></ion-icon>
+        Añadir
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -52,8 +52,14 @@
           <td>
             <ion-button color="success" (click)="toDetails(product)">Abrir</ion-button>
             <ion-button color="primary" (click)="formProduct('edit',product)">Editar</ion-button>
-            <ion-button color="warning" (click)="report(product)">Descartar</ion-button>
+            <ion-button color="warning" *ngIf="product.state!=='DISCOUNTED'" (click)="report(product)">
+              Descartar</ion-button>
             <ion-button *ngIf=" checkPermissions()" color="danger" (click)="delete(product.id)">Eliminar</ion-button>
+            <ion-button color="secondary" (click)="assign('supplier',product)">Asignar Proveedores</ion-button>
+            <ion-button color="medium" (click)="assign('priceReduction',product)">Asignar Descuentos
+            </ion-button>
+
+
           </td>
         </tr>
       </tbody>

@@ -46,6 +46,22 @@ const routes: Routes = [
   {
     path: 'reports/form',
     loadChildren: () => import('./reports/reportform/reportform.module').then(m => m.ReportformPageModule)
+  },
+  {
+    path: 'price-reductions/form',
+    loadChildren: () => import('./price-reductions/price-reductionform/price-reductionform.module').then(m => m.PriceReductionformPageModule)
+  },
+  {
+    path: 'suppliers/form',
+    loadChildren: () => import('./suppliers/supplierform/supplierform.module').then(m => m.SupplierformPageModule)
+  },
+  {
+    path: 'users/form',
+    loadChildren: () => import('./users/userform/userform.module').then(m => m.UserformPageModule)
+  },
+  {
+    path: 'products/assign',
+    loadChildren: () => import('./products/assign/assign.module').then(m => m.AssignPageModule)
   }
 ];
 

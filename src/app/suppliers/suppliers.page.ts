@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Supplier } from '../dtos/supplier';
 import { UtilsService } from '../utils/utils.service';
 import { SupplierService } from './supplier.service';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: 'app-suppliers',
@@ -37,17 +37,36 @@ export class SuppliersPage implements OnInit {
   }
 
 
-  delete(id) {
-    this.utils.presentAlert("Atención", "¿Está seguro que desea eliminar este informe?", [{
-      text: "Confirmar", handler: _ => {
-        this.supplierServ.deleteSupplier(id).subscribe(res => {
-          this.utils.presentToast("Suppliero Eliminado", 3000, "top");
-          this.ionViewWillEnter();
+  formSupplier(operation, supplier) {
+    switch (operation) {
+      case 'add':
+        this.route.navigate(['/suppliers/form']);
+        break;
+      case 'edit':
+
+        let params: NavigationExtras = {
+          state: {
+            supplier: supplier
+          }
         }
-        );
+        this.route.navigate(['/suppliers/form'], params);
+        break;
+    }
+  }
+
+  delete(id) {
+    this.utils.presentAlert("Atención", "¿Está seguro que desea eliminar este proveedor?", [
+      { text: "Cancelar" },
+      {
+        text: "Eliminar", handler: _ => {
+          this.supplierServ.deleteSupplier(id).subscribe(res => {
+            this.utils.presentToast("Proveedor Eliminado", 3000, "top");
+            this.ionViewWillEnter();
+          }
+          );
+        }
       }
-    },
-    { text: "Cancelar" }])
+    ])
 
   }
 

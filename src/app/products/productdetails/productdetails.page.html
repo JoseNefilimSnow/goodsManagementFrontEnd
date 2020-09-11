@@ -15,7 +15,7 @@
         </ion-item>
         <ion-item class="supersize mt-2" wrap-text>Estado: {{this.beautifyStatus(product.state)}}</ion-item>
         <ion-item class="supersize mt-2" wrap-text>Creador(nombre): {{product.creator.username}}</ion-item>
-        <ion-item class="supersize mt- " wrap-text>Precio: {{product.price}} €</ion-item>
+        <ion-item class="supersize mt-2 " wrap-text>Precio: {{product.price}} €</ion-item>
       </ion-list>
     </ion-card>
   </div>
@@ -26,8 +26,8 @@
         <ion-item class="supersize">Descuentos:</ion-item>
 
         <ion-list>
-          <ion-item *ngFor="let pr of product.priceReductions">
-            {{pr.reducedPrice}}
+          <ion-item class="supersize mt-2" *ngFor="let pr of product.priceReductions">
+            {{pr.reducedPrice}} %
           </ion-item>
         </ion-list>
       </ion-card>
@@ -38,7 +38,7 @@
       <ion-card class="pl-5 pr-5">
         <ion-item class="supersize">Proveedores:</ion-item>
         <ion-list>
-          <ion-item *ngFor="let supplier of product.suppliers">
+          <ion-item class="supersize mt-2" *ngFor="let supplier of product.suppliers">
             {{supplier.name}}
           </ion-item>
         </ion-list>

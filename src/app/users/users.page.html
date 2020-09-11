@@ -1,8 +1,13 @@
 <ion-header>
-  <ion-toolbar color="ligth text-center">
+  <ion-toolbar color="medium text-center">
     <ion-title class="supersize">Usuarios</ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button class="supersize" routerLink="/users/form">
+        Añadir
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -26,7 +31,9 @@
           <td>{{this.beautifyEnabled(user.enabled)}}</td>
 
           <td>
-            <ion-button color="danger" *ngIf="checkPermissions()" (click)="delete(user.id)">Desactivar</ion-button>
+            <ion-button color="success" *ngIf="!user.enabled" (click)="reactivate(user.id,user)">Reactivar
+            </ion-button>
+            <ion-button color="danger" *ngIf="user.enabled" (click)="delete(user.id,user)">Eliminar</ion-button>
           </td>
         </tr>
       </tbody>

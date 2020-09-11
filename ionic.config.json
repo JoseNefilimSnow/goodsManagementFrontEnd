@@ -1,5 +1,7 @@
 {
   "name": "goodsManagementFrontEnd",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }

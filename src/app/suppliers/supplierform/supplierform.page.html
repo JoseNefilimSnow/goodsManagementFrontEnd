@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="warning text-center">
+    <ion-title class="supersize">Añadir Proveedor:</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="suppliers" (click)="cancel()"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="mr-3 ml-3 mt-5">
+
+    <form [formGroup]="supplierForm" (ngSubmit)="supplierSubmit()">
+
+      <ion-item class="supersize">
+        <ion-label>Nombre:</ion-label>
+        <ion-input type="text" placeholder="Nombre" text-wrap formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item class="supersize">
+        <ion-label>País:</ion-label>
+        <ion-input type="text" placeholder="País" text-wrap formControlName="country"></ion-input>
+      </ion-item>
+
+
+      <ion-row class="mt-3">
+        <ion-col size="6">
+          <ion-button class="supersize2" expand="full" color="danger" (click)="cancel()">Cancelar</ion-button>
+        </ion-col>
+
+        <ion-col size="6">
+          <ion-button class="supersize2" expand="full" color="primary" type="submit" [disabled]="!supplierForm.valid">
+            Enviar</ion-button>
+        </ion-col>
+
+      </ion-row>
+    </form>
+  </ion-card>
+</ion-content>

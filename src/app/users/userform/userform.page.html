@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="medium text-center">
+    <ion-title class="supersize">Añadir Usuario:</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="users" (click)="cancel()"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="mr-3 ml-3 mt-5">
+
+    <form [formGroup]="userForm" (ngSubmit)="userSubmit()">
+
+      <ion-item class="supersize">
+        <ion-label>Nombre de Usuario:</ion-label>
+        <ion-input type="text" placeholder="Nombre de Usuario" text-wrap formControlName="username"></ion-input>
+      </ion-item>
+      <ion-item class="supersize">
+        <ion-label>Contraseña:</ion-label>
+        <ion-input type="text" placeholder="Contraseña" text-wrap formControlName="password"></ion-input>
+      </ion-item>
+
+      <ion-card color="medium">
+        <ion-item>
+          <ion-label class="supersize">Permiso:</ion-label>
+          <ion-select wrap-text interface="popover" class="supersize" formControlName="permission">
+            <ion-select-option class="supersize" value="ADMIN">- Administrador</ion-select-option>
+            <ion-select-option class="supersize" value="USER">- Usuario</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card>
+
+      <ion-row class="mt-3">
+        <ion-col size="6">
+          <ion-button class="supersize2" expand="full" color="danger" (click)="cancel()">Cancelar</ion-button>
+        </ion-col>
+
+        <ion-col size="6">
+          <ion-button class="supersize2" expand="full" color="primary" type="submit" [disabled]="!userForm.valid">
+            Enviar</ion-button>
+        </ion-col>
+
+      </ion-row>
+    </form>
+  </ion-card>
+</ion-content>

@@ -78,6 +78,7 @@ export class ProductformPage implements OnInit {
             this.cancel();
           })
         })
+        break;
       case "edit":
         let oldCreator: User = new User();
         oldCreator.id = this.oldProduct.creator.id;
@@ -105,6 +106,7 @@ export class ProductformPage implements OnInit {
           this.cancel();
         }
         );
+        break;
 
 
 

@@ -14,7 +14,8 @@
 
       <ion-item class="supersize">
         <ion-label>Código:</ion-label>
-        <ion-input type="text" placeholder="Código" formControlName="code"></ion-input>
+        <ion-input [disabled]="this.operation=='edit'" type="text" placeholder="Código" formControlName="code">
+        </ion-input>
       </ion-item>
 
       <ion-item class="supersize">

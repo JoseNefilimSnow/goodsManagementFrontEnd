@@ -24,3 +24,12 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.alertSupersize .alert-message {
+    font-size: 150%;
+}
+
+.toastSupersize {
+    font-size: 150%;
+    text-align: center;
+}

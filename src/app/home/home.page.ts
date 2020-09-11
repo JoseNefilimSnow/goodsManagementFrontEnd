@@ -7,13 +7,13 @@ import { User } from '../dtos/user';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  currentUser = JSON.parse(localStorage.getItem("currentUserToken"));
+  currentUser;
   constructor() {
 
   }
 
   ngOnInit() {
-
+    this.currentUser = JSON.parse(localStorage.getItem("currentUserToken"));
   }
 
 }

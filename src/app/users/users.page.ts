@@ -36,20 +36,63 @@ export class UsersPage implements OnInit {
     return (this.currentUser.permission === 'ADMIN') ? true : false;
   }
 
-
-  delete(id) {
-    this.utils.presentAlert("Atención", "¿Está seguro que desea eliminar este informe?", [{
-      text: "Confirmar", handler: _ => {
-        this.userServ.deleteUser(id).subscribe(res => {
-          this.utils.presentToast("Usero Eliminado", 3000, "top");
-          this.ionViewWillEnter();
+  beautifyEnabled(enabled) {
+    if (enabled) {
+      return "Si"
+    } else {
+      return "No"
+    }
+  }
+  delete(id, user) {
+    this.utils.presentAlert("Atención", "¿Está seguro que desea borrar este usuario? (Los elementos creados por el mismo se verán eliminados, se recomienda deshabilitar)", [
+      { text: "Cancelar" },
+      {
+        text: "Deshabilitar", handler: _ => {
+          let newUser = new User();
+          newUser.id = user.id;
+          newUser.username = user.username;
+          newUser.password = user.password;
+          newUser.permission = user.permission;
+          newUser.enabled = false;
+          this.userServ.updateUser(id, newUser).subscribe(res => {
+            this.utils.presentToast("Usuario Deshabilitado", 3000, "top");
+            this.ionViewWillEnter();
+          }
+          );
         }
-        );
-      }
-    },
-    { text: "Cancelar" }])
+      },
+      {
+        text: "Confirmar Borrado", handler: _ => {
+          this.userServ.deleteUser(id).subscribe(res => {
+            this.utils.presentToast("Usuario Eliminado", 3000, "top");
+            this.ionViewWillEnter();
+          }
+          );
+        }
+      },
+    ])
 
   }
+  reactivate(id, user) {
+    this.utils.presentAlert("Atención", "¿Está seguro que desea activar este usuario? ", [
+      { text: "Cancelar" },
+      {
+        text: "Reactivar", handler: _ => {
+          let newUser = new User();
+          newUser.id = user.id;
+          newUser.username = user.username;
+          newUser.password = user.password;
+          newUser.permission = user.permission;
+          newUser.enabled = true;
+          this.userServ.updateUser(id, newUser).subscribe(res => {
+            this.utils.presentToast("Usuario Reactivado", 3000, "top");
+            this.ionViewWillEnter();
+          }
+          );
+        }
+      }
+    ])
 
+  }
 
 }

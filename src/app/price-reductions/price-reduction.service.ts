@@ -35,6 +35,11 @@ export class PriceReductionService {
       catchError(err => this.handleError(err))
     );
   }
+  checkDates(priceReductions) {
+    return this.http.post<PriceReduction>(this.url + "checkDates", priceReductions, { headers: this.header }).pipe(
+      catchError(err => this.handleError(err))
+    );
+  }
 
   updatePriceReduction(id, priceReduction) {
     return this.http.put<PriceReduction>(this.url + "priceReduction/" + id, priceReduction, { headers: this.header }).pipe(

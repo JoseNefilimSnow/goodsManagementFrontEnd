@@ -1,6 +1,11 @@
 <ion-header>
   <ion-toolbar color="secondary text-center">
     <ion-title class="supersize">Descuentos</ion-title>
+    <ion-buttons slot="end">
+      <ion-button class="supersize" (click)="formPriceReduction('add',null)">
+        Añadir
+      </ion-button>
+    </ion-buttons>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
@@ -16,7 +21,7 @@
           <th><b>Fecha de Inicio:</b></th>
           <th><b>Fecha de Fin:</b></th>
           <th><b>Descuento(%):</b></th>
-          <th *ngIf="checkPermissions()">Acciones:</th>
+          <th>Acciones:</th>
         </tr>
       </thead>
       <tbody>
@@ -25,6 +30,8 @@
           <td>{{this.utils.formatDate(priceReduction.endDate)}}</td>
           <td>{{priceReduction.reducedPrice}}</td>
           <td>
+
+            <ion-button color="primary" (click)="formPriceReduction('edit',priceReduction)">Editar</ion-button>
             <ion-button color="danger" *ngIf="checkPermissions()" (click)="delete(priceReduction.id)">Eliminar
             </ion-button>
           </td>

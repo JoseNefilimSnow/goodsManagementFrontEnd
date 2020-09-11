@@ -111,18 +111,57 @@ export class ProductsPage implements OnInit {
   }
 
   delete(id) {
-    this.utils.presentAlert("Atención", "¿Está seguro que desea eliminar este producto?", [{
-      text: "Confirmar", handler: _ => {
-        this.productServ.deleteProduct(id).subscribe(res => {
-          this.utils.presentToast("Producto Eliminado", 3000, "top");
-          this.ionViewWillEnter();
+    this.utils.presentAlert("Atención", "¿Está seguro que desea eliminar este producto?", [
+      { text: "Cancelar" },
+      {
+        text: "Eliminar", handler: _ => {
+          this.productServ.deleteProduct(id).subscribe(res => {
+            this.utils.presentToast("Producto Eliminado", 3000, "top");
+            this.ionViewWillEnter();
+          }
+          );
         }
-        );
       }
-    },
-    { text: "Cancelar" }])
+    ])
 
   }
+
+  assign(mode, product) {
+
+    let creator: User = new User();
+    creator.username = product.creator.username;
+    creator.password = product.creator.password;
+    creator.id = product.creator.id;
+    creator.permission = product.creator.permission;
+    creator.enabled = product.creator.enabled;
+
+    switch (mode) {
+      case "priceReduction":
+
+        let paramsPr: NavigationExtras = {
+          state: {
+            mode: "priceReduction",
+            product: product,
+            creator: creator
+          }
+        }
+        this.route.navigate(['/products/assign'], paramsPr);
+        break;
+      case "supplier":
+
+
+        let paramsSup: NavigationExtras = {
+          state: {
+            mode: "supplier",
+            product: product,
+            creator: creator
+          }
+        }
+        this.route.navigate(['/products/assign'], paramsSup);
+        break;
+    }
+  }
+
   report(product) {
     let params: NavigationExtras = {
       state: {

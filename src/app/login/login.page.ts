@@ -20,8 +20,9 @@ export class LoginPage {
 
   constructor(private formBuilder: FormBuilder, private logServ: LoginService, private nav: NavController, private router: Router) {
   }
-  ionViewDidEnter() {
+  ionViewWillEnter() {
     localStorage.clear();
+    this.loginForm.reset();
   }
   submit() {
     this.logServ.logIn(this.loginForm.value.username, this.loginForm.value.password).subscribe(res => {

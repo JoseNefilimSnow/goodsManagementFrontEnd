@@ -37,16 +37,18 @@ export class ReportsPage implements OnInit {
 
 
   delete(id) {
-    this.utils.presentAlert("Atención", "¿Está seguro que desea eliminar este informe?", [{
-      text: "Confirmar", handler: _ => {
-        this.reportServ.deleteReport(id).subscribe(res => {
-          this.utils.presentToast("Reporto Eliminado", 3000, "top");
-          this.ionViewDidEnter();
+    this.utils.presentAlert("Atención", "¿Está seguro que desea eliminar este informe?", [
+      { text: "Cancelar" },
+      {
+        text: "Eliminar", handler: _ => {
+          this.reportServ.deleteReport(id).subscribe(res => {
+            this.utils.presentToast("Informe Eliminado", 3000, "top");
+            this.ionViewDidEnter();
+          }
+          );
         }
-        );
       }
-    },
-    { text: "Cancelar" }])
+    ])
 
   }
 
