@@ -43,9 +43,7 @@ Una vez dentro se nos presenta una pantalla con accesos a todos los menús de la
 
 <img src="./Documentation Extras/mainMenu.JPG" width="600">
 
-Cada menú contara con una estructura formada por una tabla con los distintos datos ademas de un boton en la esquina superior izquierda para volver atras, un boton en la esquina superior derecha con forma de '+' para ir al formulario de creación, y en la tabla una sección con las diferentes acciones para cada una de las instancias mostradas.
-
-<img src="./Documentation Extras/menus.JPG" width="600">
+Cada menú contara con una estructura formada por una tabla con los distintos datos ademas de un boton en la esquina superior izquierda para volver atras, un boton en la esquina superior derecha, 'Añadir' para ir al formulario de creación, y en la tabla una sección con las diferentes acciones para cada una de las instancias mostradas.
 
 
 
