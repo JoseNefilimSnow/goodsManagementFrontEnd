@@ -35,11 +35,11 @@ The app will be used for completing the next tasks:
 
 ## User Manual (Spanish)
 
-Iniciamos la aplicación 'Goods Management App' en la carpeta 'release-builds', y ahi iniciamos sesión (esto será posible después iniciar el servidor ya que se nos crean 2 usuarios: un admin (usuario: ADMIN, contraseña: 1234) y un usuario normal (usuario: USER, contraseña: 1234))
+Tras realizar un git clone o descargar este proyecto, iniciamos la aplicación 'Goods Management App' en la carpeta 'release-builds', y ahi iniciamos sesión (esto será posible después iniciar el servidor ya que se nos crean 2 usuarios: un admin (usuario: ADMIN, contraseña: 1234) y un usuario normal (usuario: USER, contraseña: 1234))
 
 <img src="./Documentation Extras/login.JPG" width="600">
 
-Una vez dentro se nos presenta una pantalla con accesos a todos los menús de la app (con diferentes variaciones en esta y en los mismos menús dependiendo del rol con el que entres) y un botón para cerrar sesión en la esquina superior derecha
+Una vez dentro se nos presenta una pantalla con accesos a todos los menús de la app (con diferentes variaciones en esta y en los mismos menús dependiendo del rol con el que se acceda) y un botón para cerrar sesión en la esquina superior derecha
 
 <img src="./Documentation Extras/mainMenu.JPG" width="600">
 
